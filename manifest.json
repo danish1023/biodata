@@ -23,5 +23,5 @@
     }
   ],
   "scope": "./",
-  "start_url": "https://www.google.co.in/"
+  "start_url": "./xyz/index.html"
 }
