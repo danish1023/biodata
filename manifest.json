@@ -22,6 +22,6 @@
       "sizes": "512x512"
     }
   ],
-  "scope": "./",
+  "scope": "./xyz",
   "start_url": "./xyz/index.html"
 }
