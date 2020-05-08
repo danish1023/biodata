@@ -1,15 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-  <title>MD DANISH</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="I am Danish">
+    <title>Push Notification</title>
 </head>
 
 <body>
-  <h1><center>Hello World!</center></h1>
+
+    <h1>This is a push notification test for web</h1>
+
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-messaging.js"></script>
+    <link rel="manifest" href="manifest.json">
+
+    <script>
+
+        var firebaseConfig = {
+            apiKey: "AIzaSyCx_hSEBw4qZHLlcG4rPmQxE3nRk4VXdBE",
+            authDomain: "webpush-65641.firebaseapp.com",
+            databaseURL: "https://webpush-65641.firebaseio.com",
+            projectId: "webpush-65641",
+            storageBucket: "webpush-65641.appspot.com",
+            messagingSenderId: "561192500901",
+            appId: "1:561192500901:web:12186b70c84e4f32e6d74c",
+            measurementId: "G-WD86559KLX"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const messaging = firebase.messaging();
+        messaging.usePublicVapidKey('BG8oxHNFBT5WdlOkk3pklnZZucsW3nyV55LsyxxeWZBZ2tBiU1QEJ2EMhDsiikKhX7mWSRwl-8syHMd0ooy05dA');
+
+        messaging.requestPermission().then(function () {
+            console.log('Notification Permission Granted');
+            // if ('serviceWorker' in navigator) {
+            //     navigator.serviceWorker.register('firebase-messaging-sw.js')
+            //     .then(function(registration) {
+            //         console.log('Registration successful, scope is:', registration.scope);
+            //     }).catch(function(err) {
+            //         console.log('Service worker registration failed, error:', err);
+            //     });
+            // }
+            return messaging.getToken();
+        })
+        .then(function (token) {
+            console.log(token);
+        })
+        .catch(function (err) {
+            console.log('Unable to get Permission.', err);
+        });
+
+        messaging.onMessage((payload) => {
+            console.log('Message received. ', payload);
+        });
+
+    </script>
+
 </body>
 
 </html>
