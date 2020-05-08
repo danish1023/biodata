@@ -16,7 +16,10 @@ const messaging = firebase.messaging();
 
 messaging.setBackgroundMessageHandler(function (payload) {
     console.log('Handling background message ', payload);
-    return self.registration.showNotification(payload.data.title, {
+    const title = payload.data.title;
+    const options = {
       body: payload.data.body,
-    });
+      silent: true
+    };
+    return self.registration.showNotification(title, options);
 });
