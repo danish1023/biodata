@@ -18,8 +18,7 @@ messaging.setBackgroundMessageHandler(function (payload) {
     console.log('Handling background message ', payload);
     const title = payload.data.title;
     const options = {
-      body: payload.data.body,
-      silent: false
+      body: payload.data.body
     };
     return self.registration.showNotification(title, options);
 });
