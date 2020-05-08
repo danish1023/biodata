@@ -17,6 +17,6 @@ const messaging = firebase.messaging();
 messaging.setBackgroundMessageHandler(function (payload) {
     console.log('Handling background message ', payload);
     return self.registration.showNotification(payload.data.title, {
-      body: payload.data.body,
+      body: payload.data.body,silent: false,
     });
 });
