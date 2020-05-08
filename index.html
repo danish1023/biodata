@@ -40,12 +40,6 @@
             //         console.log('Service worker registration failed, error:', err);
             //     });
             // }
-            if (!('PushManager' in window)) {
-                console.log('not supported');
-            }
-            else{
-                console.log('supported');
-            }
             return messaging.getToken();
         })
         .then(function (token) {
